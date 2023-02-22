@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // $table->string('connection', ['Jack', 'USB', 'Wireless'])->default('Jack');
 
         Schema::create('headsets', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->string('connection', 50);
-            $table->string('channel', 10);
+            $table->enum('connection', ['Jack', 'USB', 'Wireless']);
             $table->integer('price');
+            $table->date('making');
             $table->timestamps();
         });
     }
