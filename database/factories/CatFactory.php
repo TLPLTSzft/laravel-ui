@@ -16,8 +16,14 @@ class CatFactory extends Factory
      */
     public function definition(): array
     {
+        $name = ['Whiskey', 'Cappuccino', 'Mochi', 'Ginger', 'Honey', 'Garfield', 'Mufasa', 'Lucifer', 'Felix', 'Lady', 'Lucky', 'Princess'];
+        $color = ['black', 'grey', 'brown', 'white', 'black & white', 'spotted', 'ginger'];
+
         return [
-            //
+            'name' => fake()->randomElement($name),
+            'age' => fake()->numberBetween(1, 30),
+            'tom-cat' => fake()->boolean(),
+            'color' => fake()->randomElement($color),
         ];
     }
 }

@@ -14,9 +14,9 @@ return new class extends Migration
 
         Schema::create('headsets', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->enum('connection', ['Jack', 'USB', 'Wireless']);
-            $table->integer('price');
+            $table->string('brand', 50);
+            $table->enum('connection', ['Jack', 'USB', 'Wireless', 'Jack / USB', 'Jack / Wireless', 'USB / Wireless', 'Jack / USB / Wireless']);
+            $table->integer('priceUSD');
             $table->date('making');
             $table->timestamps();
         });
