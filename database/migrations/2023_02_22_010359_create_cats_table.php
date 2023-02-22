@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cats', function (Blueprint $table) {
+            $color = ['black', 'grey', 'brown', 'white', 'black & white', 'spotted', 'ginger'];
+
             $table->id();
             $table->string('name', 50);
             $table->integer('age');
             $table->boolean('tom-cat');
-            $table->enum('color', ['black', 'grey', 'brown', 'white', 'black & white', 'spotted', 'ginger']);
+            $table->enum('color', $color);
             $table->timestamps();
         });
     }

@@ -24,7 +24,6 @@ class HeadsetFactory extends Factory
             'connection' => fake()->randomElement($connection),
             'priceUSD' => fake()->numberBetween(10, 10000),
             'making' => fake()->dateTimeBetween('-10 years', 'now'),
-
         ];
     }
 }
