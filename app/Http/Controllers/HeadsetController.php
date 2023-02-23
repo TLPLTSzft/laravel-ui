@@ -13,7 +13,7 @@ class HeadsetController extends Controller
      */
     public function index()
     {
-        //
+        return view('headset.list');
     }
 
     /**
