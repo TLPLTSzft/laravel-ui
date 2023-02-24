@@ -13,7 +13,8 @@ class CatController extends Controller
      */
     public function index()
     {
-        return view('cat.list');
+        $cats = Cat::all();
+        return view('cats.index', ['cats' => $cats]);
     }
 
     /**

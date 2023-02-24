@@ -24,5 +24,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/headset', HeadsetController::class);
-Route::resource('/cat', CatController::class);
+Route::resource('/headsets', HeadsetController::class);
+Route::resource('/cats', CatController::class);

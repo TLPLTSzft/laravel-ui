@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->integer('age');
-            $table->boolean('tom-cat');
+            $table->boolean('tom_cat');
             $table->enum('color', $color);
             $table->timestamps();
         });

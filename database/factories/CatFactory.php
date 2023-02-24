@@ -22,7 +22,7 @@ class CatFactory extends Factory
         return [
             'name' => fake()->randomElement($name),
             'age' => fake()->numberBetween(1, 30),
-            'tom-cat' => fake()->boolean(),
+            'tom_cat' => fake()->boolean(),
             'color' => fake()->randomElement($color),
         ];
     }

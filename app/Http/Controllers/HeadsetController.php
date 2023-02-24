@@ -13,7 +13,8 @@ class HeadsetController extends Controller
      */
     public function index()
     {
-        return view('headset.list');
+        $headsets = Headset::all();
+        return view('headsets.index', ['headsets' => $headsets]);
     }
 
     /**
