@@ -11,7 +11,7 @@ class UpdateHeadsetRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,13 @@ class UpdateHeadsetRequest extends FormRequest
      */
     public function rules(): array
     {
+        $connection = ['Jack', 'USB', 'Wireless', 'Jack / USB', 'Jack / Wireless', 'USB / Wireless', 'Jack / USB / Wireless'];
+
         return [
-            //
+            'brand' => 'string|max:50',
+            'connection' => 'string|in_array:array_count_values($connection)',
+            'priceUSD' => 'integer|between:10,10000',
+            'date' => 'date|date_format:Y-m-d'
         ];
     }
 }

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Cat extends Model
 {
     use HasFactory;
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    protected $fillable = [
+        'name',
+        'age',
+        'tom_cat',
+        'color'
+    ];
 }

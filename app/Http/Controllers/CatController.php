@@ -22,7 +22,7 @@ class CatController extends Controller
      */
     public function create()
     {
-        //
+        return view('cats.create');
     }
 
     /**
@@ -30,7 +30,10 @@ class CatController extends Controller
      */
     public function store(StoreCatRequest $request)
     {
-        //
+        $cat = new Cat();
+        $cat->fill($request->all());
+        $cat->save();
+        return redirect()->route('cats.index');
     }
 
     /**

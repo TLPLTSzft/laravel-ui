@@ -37,7 +37,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('headsets.index') }}">{{ 'List of headsets' }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cats.index') }}">{{ 'List of cats' }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('headsets.create') }}">{{ 'Add headset' }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cats.create') }}">{{ 'Add cat' }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

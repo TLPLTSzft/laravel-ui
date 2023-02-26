@@ -22,7 +22,7 @@ class HeadsetController extends Controller
      */
     public function create()
     {
-        //
+        return view('headsets.create');
     }
 
     /**
@@ -30,7 +30,10 @@ class HeadsetController extends Controller
      */
     public function store(StoreHeadsetRequest $request)
     {
-        //
+        $headset = new Headset();
+        $headset->fill($request->all());
+        $headset->save();
+        return redirect()->route('headsets.index');
     }
 
     /**

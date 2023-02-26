@@ -11,7 +11,7 @@ class StoreCatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,13 @@ class StoreCatRequest extends FormRequest
      */
     public function rules(): array
     {
+        $color = ['black', 'grey', 'brown', 'white', 'black & white', 'spotted', 'ginger'];
+
         return [
-            //
+            'name' => 'required|string|max:50',
+            'age' => 'required|integer|between:1,30',
+            'tom_cat' => 'required|in:0,1',
+            'color' => 'required|string|in_array:array_count_values($color)'
         ];
     }
 }

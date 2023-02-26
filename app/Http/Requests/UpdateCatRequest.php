@@ -11,7 +11,7 @@ class UpdateCatRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,13 @@ class UpdateCatRequest extends FormRequest
      */
     public function rules(): array
     {
+        $color = ['black', 'grey', 'brown', 'white', 'black & white', 'spotted', 'ginger'];
+
         return [
-            //
+            'name' => 'string|max:50',
+            'age' => 'integer|between:1,30',
+            'tom_cat' => 'in:0,1',
+            'color' => 'string|in_array:array_count_values($color)'
         ];
     }
 }

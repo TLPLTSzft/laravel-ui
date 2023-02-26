@@ -11,7 +11,7 @@ class StoreHeadsetRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,13 @@ class StoreHeadsetRequest extends FormRequest
      */
     public function rules(): array
     {
+        $connection = ['Jack', 'USB', 'Wireless', 'Jack / USB', 'Jack / Wireless', 'USB / Wireless', 'Jack / USB / Wireless'];
+
         return [
-            //
+            'brand' => 'required|string|max:50',
+            'connection' => 'required|string|in_array:array_count_values($connection)',
+            'priceUSD' => 'required|integer|between:10,10000',
+            'date' => 'required|date|date_format:Y-m-d'
         ];
     }
 }
