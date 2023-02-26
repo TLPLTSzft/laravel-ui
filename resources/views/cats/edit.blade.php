@@ -10,7 +10,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add a new cat</h4>
+                        <h4>Edit {{ $cat->id . ' - ' . $cat->name }}</h4>
                     </div>
 
                     <div class="card-body">
@@ -22,14 +22,15 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-                        <form action={{ route('cats.store') }} method="post">
+                        <form action={{ route('cats.update', $cat->id) }} method="post">
+                            @method('PUT')
                             @csrf
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4  col-form-label text-md-end">Name:</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" name="name" id="name" value="{{ old('name') }}"
-                                        @class([
+                                    <input type="text" name="name" id="name"
+                                        value="{{ old('name') ? old('name') : $cat->name }}" @class([
                                             'form-control',
                                             'is-invalid' => array_key_exists('name', $errors->messages()),
                                         ])>
@@ -45,8 +46,8 @@
                                 <label for="age" class="col-md-4  col-form-label text-md-end">Age:</label>
 
                                 <div class="col-md-6">
-                                    <input type="number" name="age" id="age" value="{{ old('age') }}"
-                                        @class([
+                                    <input type="number" name="age" id="age"
+                                        value="{{ old('age') ? old('age') : $cat->age }}" @class([
                                             'form-control',
                                             'is-invalid' => array_key_exists('age', $errors->messages()),
                                         ])>
@@ -74,39 +75,39 @@
                                         class="form-check-input">
                                 </div>
                                 <label class="row ms-2 col-md-2 col-form-label">No</label>
-                            </div>
 
-                            <div class="row mb-3">
-                                <label for="color" class="col-md-4  col-form-label text-md-end">Color:</label>
+                                <div class="row mb-3">
+                                    <label for="color" class="col-md-4  col-form-label text-md-end">Color:</label>
 
-                                <div class="col-md-6">
-                                    <input list="colors" name="color" id="color" value="{{ old('color') }}"
-                                        @class([
-                                            'form-control',
-                                            'is-invalid' => array_key_exists('color', $errors->messages()),
-                                        ])>
-                                    <datalist id="colors">
-                                        <option value='black'>
-                                        <option value='grey'>
-                                        <option value='brown'>
-                                        <option value='white'>
-                                        <option value='black & white'>
-                                        <option value='spotted'>
-                                        <option value='ginger'>
-                                    </datalist>
-                                    @error('color')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                    <div class="col-md-6">
+                                        <input list="colors" name="color" id="color"
+                                            value="{{ old('color') ? old('color') : $cat->color }}"
+                                            @class([
+                                                'form-control',
+                                                'is-invalid' => array_key_exists('color', $errors->messages()),
+                                            ])>
+                                        <datalist id="colors">
+                                            <option value='black'>
+                                            <option value='grey'>
+                                            <option value='brown'>
+                                            <option value='white'>
+                                            <option value='black & white'>
+                                            <option value='spotted'>
+                                            <option value='ginger'>
+                                        </datalist>
+                                        @error('color')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-outline-secondary">Add</button>
+                                <div class="row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-outline-secondary">Edit</button>
+                                    </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>

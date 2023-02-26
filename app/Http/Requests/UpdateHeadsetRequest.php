@@ -25,9 +25,9 @@ class UpdateHeadsetRequest extends FormRequest
 
         return [
             'brand' => 'string|max:50',
-            'connection' => 'string|in_array:array_count_values($connection)',
+            'connection' => 'string|in:' . implode(',', $connection),
             'priceUSD' => 'integer|between:10,10000',
-            'date' => 'date|date_format:Y-m-d'
+            'making' => 'date'
         ];
     }
 }

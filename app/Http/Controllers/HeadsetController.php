@@ -33,7 +33,7 @@ class HeadsetController extends Controller
         $headset = new Headset();
         $headset->fill($request->all());
         $headset->save();
-        return redirect()->route('headsets.index');
+        return redirect()->route('headsets.show', $headset->id);
     }
 
     /**
@@ -41,7 +41,7 @@ class HeadsetController extends Controller
      */
     public function show(Headset $headset)
     {
-        //
+        return view('headsets.show', ['headset' => $headset]);
     }
 
     /**
@@ -49,7 +49,7 @@ class HeadsetController extends Controller
      */
     public function edit(Headset $headset)
     {
-        //
+        return view('headsets.edit', ['headset' => $headset]);
     }
 
     /**
@@ -57,7 +57,9 @@ class HeadsetController extends Controller
      */
     public function update(UpdateHeadsetRequest $request, Headset $headset)
     {
-        //
+        $headset->fill($request->all());
+        $headset->save();
+        return redirect()->route('headsets.show', $headset->id);
     }
 
     /**
@@ -65,6 +67,7 @@ class HeadsetController extends Controller
      */
     public function destroy(Headset $headset)
     {
-        //
+        $headset->delete();
+        return redirect()->route('headsets.index');
     }
 }

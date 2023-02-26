@@ -15,10 +15,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>brand</th>
-                            <th>connection</th>
-                            <th>priceUSD</th>
-                            <th>making</th>
+                            <th>Brand</th>
+                            <th>Connection</th>
+                            <th>PriceUSD</th>
+                            <th>Making</th>
+                            <th>Operation</th>
                         </tr>
                     </thead>
 
@@ -30,6 +31,13 @@
                                 <td>{{ $headset->connection }}</td>
                                 <td>{{ $headset->priceUSD }}</td>
                                 <td>{{ $headset->making }}</td>
+                                <td>
+                                    <a href="{{ route('headsets.show', $headset->id) }}"
+                                        class="btn btn-outline-secondary">Details</a>
+                                    <a href="{{ route('headsets.edit', $headset->id) }}"
+                                        class="btn btn-outline-secondary">Edit</a>
+                                    @include('headsets.delete', ['headset' => $headset])
+                                </td>
                             </tr>
                         @endforeach
                     </body>

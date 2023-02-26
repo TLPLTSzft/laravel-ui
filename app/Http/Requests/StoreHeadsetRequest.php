@@ -25,9 +25,9 @@ class StoreHeadsetRequest extends FormRequest
 
         return [
             'brand' => 'required|string|max:50',
-            'connection' => 'required|string|in_array:array_count_values($connection)',
+            'connection' => 'required|string|in:' . implode(',', $connection),
             'priceUSD' => 'required|integer|between:10,10000',
-            'date' => 'required|date|date_format:Y-m-d'
+            'making' => 'required|date'
         ];
     }
 }

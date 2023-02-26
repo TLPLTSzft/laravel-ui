@@ -26,8 +26,8 @@ class UpdateCatRequest extends FormRequest
         return [
             'name' => 'string|max:50',
             'age' => 'integer|between:1,30',
-            'tom_cat' => 'in:0,1',
-            'color' => 'string|in_array:array_count_values($color)'
+            // 'tom_cat' => ,
+            'color' => 'string|in:' . implode(',', $color)
         ];
     }
 }

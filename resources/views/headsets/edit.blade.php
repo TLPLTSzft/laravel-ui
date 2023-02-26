@@ -10,7 +10,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Add a new headset</h4>
+                        <h4>Edits {{ $headset->id . ' - ' . $headset->brand }}</h4>
                     </div>
 
                     <div class="card-body">
@@ -22,18 +22,20 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-                        <form action={{ route('headsets.store') }} method="post">
+                        <form action={{ route('headsets.update', $headset->id) }} method="post">
+                            @method('PUT')
                             @csrf
                             <div class="row mb-3">
                                 <label for="brand" class="col-md-4  col-form-label text-md-end">Brand:</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" name="brand" id="brand" value="{{ old('brand') }}"
+                                    <input type="text" id="brand" name="brand"
+                                        value="{{ old('brand') ? old('brand') : $headset->brand }}"
                                         @class([
                                             'form-control',
                                             'is-invalid' => array_key_exists('brand', $errors->messages()),
                                         ])>
-                                    @error('brand')
+                                    @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -46,7 +48,8 @@
 
                                 <div class="col-md-6">
                                     <input list="connections" name="connection" id="connection"
-                                        value="{{ old('connection') }}" @class([
+                                        value="{{ old('connection') ? old('connection') : $headset->connection }}"
+                                        @class([
                                             'form-control',
                                             'is-invalid' => array_key_exists('connection', $errors->messages()),
                                         ])>
@@ -71,7 +74,8 @@
                                 <label for="priceUSD" class="col-md-4  col-form-label text-md-end">USD:</label>
 
                                 <div class="col-md-6">
-                                    <input type="number" name="priceUSD" id="priceUSD" value="{{ old('priceUSD') }}"
+                                    <input type="number" name="priceUSD" id="priceUSD"
+                                        value="{{ old('priceUSD') ? old('priceUSD') : $headset->priceUSD }}"
                                         @class([
                                             'form-control',
                                             'is-invalid' => array_key_exists('priceUSD', $errors->messages()),
@@ -88,14 +92,14 @@
                                 <label for="making" class="col-md-4  col-form-label text-md-end">Making:</label>
 
                                 <div class="col-md-6">
-                                    <input type="date" name="making" id="making" value="{{ old('making') }}"
-                                        class="form-control">
+                                    <input type="date" name="making" id="making"
+                                        value="{{ old('making') ? old('making') : $headset->making }}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-outline-secondary">Add</button>
+                                    <button type="submit" class="btn btn-outline-secondary">Edit</button>
                                 </div>
                             </div>
                         </form>

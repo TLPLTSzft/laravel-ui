@@ -15,10 +15,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>name</th>
-                            <th>age</th>
-                            <th>tom_cat</th>
-                            <th>color</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Tom_cat</th>
+                            <th>Color</th>
+                            <th>Operation</th>
                         </tr>
                     </thead>
 
@@ -30,6 +31,11 @@
                                 <td>{{ $cat->age }}</td>
                                 <td>{{ $cat->tom_cat }}</td>
                                 <td>{{ $cat->color }}</td>
+                                <td>
+                                    <a href="{{ route('cats.show', $cat->id) }}" class="btn btn-outline-secondary">Details</a>
+                                    <a href="{{ route('cats.edit', $cat->id) }}" class="btn btn-outline-secondary">Edit</a>
+                                    @include('cats.delete', ['cat' => $cat])
+                                </td>
                             </tr>
                         @endforeach
                     </body>

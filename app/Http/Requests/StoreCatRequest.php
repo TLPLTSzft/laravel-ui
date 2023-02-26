@@ -26,8 +26,8 @@ class StoreCatRequest extends FormRequest
         return [
             'name' => 'required|string|max:50',
             'age' => 'required|integer|between:1,30',
-            'tom_cat' => 'required|in:0,1',
-            'color' => 'required|string|in_array:array_count_values($color)'
+            'tom_cat' => 'required',
+            'color' => 'required|string|in:' . implode(',', $color)
         ];
     }
 }
